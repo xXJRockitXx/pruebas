@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "870247753942",
+    "project_id": "authpruebas-e6d6e",
+    "storage_bucket": "authpruebas-e6d6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870247753942:android:7cd10a9824e95f5dc18177",
+        "android_client_info": {
+          "package_name": "com.jrockit.pruebas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "870247753942-p1n1qu5vrn5irqp5fquaqfi7p5k16fje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT-cbf_MSJ4Gq0Ok9mIjVrqz9iIj0nDy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "870247753942-p1n1qu5vrn5irqp5fquaqfi7p5k16fje.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
