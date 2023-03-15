@@ -21,11 +21,16 @@ class _HomePageState extends State<HomePage> {
     docIDs.clear(); //Evita que se dupliquen cada HotReload xd
     await FirebaseFirestore.instance
         .collection("usuarios")
+        .orderBy("edad", descending: true)
         .get()
-        .then((snapshot) => snapshot.docs.forEach((element) {
+        .then(
+          (snapshot) => snapshot.docs.forEach(
+            (element) {
               print(element.reference);
               docIDs.add(element.reference.id);
-            },),);
+            },
+          ),
+        );
   }
 
   @override
