@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  String? mtoken = " ";
+  String tok = " ";
   // Controladores del texto
   final _emailControl = TextEditingController();
   final _passwordControl = TextEditingController();
@@ -26,21 +29,53 @@ class _RegisterPageState extends State<RegisterPage> {
           email: _emailControl.text.trim(),
           password: _passwordControl.text.trim());
 
+      await FirebaseMessaging.instance.getToken().then((token) {
+        setState(() {
+          mtoken = token;
+        });
+        //saveToken(token!);
+        agregarDatos(
+            _nameControl.text.trim(),
+            _apellidoControl.text.trim(),
+            int.parse(_edadControl.text.trim()),
+            _emailControl.text.trim(),
+            token!);
+      });
+
       //Agregamos datos del usuario
-      agregarDatos(_nameControl.text.trim(), _apellidoControl.text.trim(),
-          int.parse(_edadControl.text.trim()), _emailControl.text.trim());
+      /*agregarDatos(_nameControl.text.trim(), _apellidoControl.text.trim(),
+          int.parse(_edadControl.text.trim()), _emailControl.text.trim());*/
     }
   }
 
   Future agregarDatos(
-      String nombre, String apellido, int edad, String email) async {
+      String nombre, String apellido, int edad, String email, token) async {
+    //getToken();
     await FirebaseFirestore.instance.collection("usuarios").add({
       "nombre": nombre,
       "apellido": apellido,
       "edad": edad,
       "email": email,
+      "token": token,
     });
   }
+
+  /*getToken() async {
+    await FirebaseMessaging.instance.getToken().then((token) {
+      setState(() {
+        mtoken = token;
+      });
+      //tok = token!;
+      //saveToken(token!);
+      //return token!;
+    });
+  }*/
+
+  /*void saveToken(String token) async {
+    await FirebaseFirestore.instance
+        .collection("usuarios")
+        .add({"token": token});
+  }*/
 
   bool passwordConfirmed() {
     if (_passwordControl.text.trim() == _confirmPasswordControl.text.trim()) {

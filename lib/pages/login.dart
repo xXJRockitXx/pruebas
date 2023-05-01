@@ -21,6 +21,7 @@ class _LoginState extends State<Login> {
       return Center(child: CircularProgressIndicator());
     });
 
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailControl.text.trim(),
         password: _passwordControl.text.trim());
