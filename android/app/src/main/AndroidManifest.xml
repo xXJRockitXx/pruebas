@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jrockit.pruebas">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="pruebas"
+        android:usesCleartextTraffic="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

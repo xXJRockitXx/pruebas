@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:pruebas/modules/module_1.dart';
 import 'package:pruebas/read%20data/get_user_name.dart';
 import 'package:pruebas/services/notification_services.dart';
 
@@ -119,8 +120,26 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/module_1");
+              },
+              child: const Text("Módulo 1")),
+
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/module_2");
+              },
+              child: const Text("Módulo 2")),
+
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/module_3");
+              },
+              child: const Text("Módulo 3")),
+          
           Expanded(
             child: FutureBuilder(
               future: getDocIDs(),
@@ -140,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                     });
               },
             ),
-          )
+          ),
         ],
       )),
     );
