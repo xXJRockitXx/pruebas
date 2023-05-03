@@ -1,8 +1,10 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
+import 'package:pruebas/widget_arguments.dart';
 
 class VideoScreen extends StatefulWidget {
-  const VideoScreen({Key? key}) : super(key: key);
+  String url;
+  VideoScreen(this.url,{Key? key}) : super(key: key);
 
   @override
   State<VideoScreen> createState() => _VideoScreenState();
@@ -13,8 +15,10 @@ class _VideoScreenState extends State<VideoScreen> {
       BetterPlayerController(betterPlayerConfiguration);*/
 
   //final url = "gs://demos-d97a5.appspot.com/Modulo_1/playa.mp4";
-  final url =
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+
+  //final url = "https://firebasestorage.googleapis.com/v0/b/demos-d97a5.appspot.com/o/Modulo_1%2Fplaya.mp4?alt=media&token=6c3e8c9a-f53b-45d9-ac93-d96feeda7ad2";
+  /*final url =
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";*/
   GlobalKey _betterPlayerKey = GlobalKey();
   BetterPlayerController? _betterPlayerController;
 
@@ -27,7 +31,7 @@ class _VideoScreenState extends State<VideoScreen> {
 
     BetterPlayerDataSourceType type = BetterPlayerDataSourceType.network;
 
-    BetterPlayerDataSource dataSource = BetterPlayerDataSource(type, url);
+    BetterPlayerDataSource dataSource = BetterPlayerDataSource(type, widget.url);
 
     _betterPlayerController = BetterPlayerController(betterPlayerConfiguration);
 
@@ -38,9 +42,10 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
+//    final WidgetArguments arguments = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Example player"),
+        title: Text("Ejemplo de video"),
       ),
       body: AspectRatio(
         aspectRatio: 16 / 9,

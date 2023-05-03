@@ -6,6 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:pruebas/modules/module_1.dart';
 import 'package:pruebas/read%20data/get_user_name.dart';
 import 'package:pruebas/services/notification_services.dart';
+import 'package:pruebas/widget_arguments.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -120,26 +121,34 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/module_1");
+                Navigator.pushNamed(
+                  context,
+                  "/module_1",
+                );
               },
               child: const Text("Módulo 1")),
-
           ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "/module_2");
+                Navigator.pushNamed(
+                  context,
+                  "/module_2",
+                );
               },
               child: const Text("Módulo 2")),
-
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/step_counter");
+              },
+              child: const Text("Módulo 3")),
           ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, "/module_3");
               },
-              child: const Text("Módulo 3")),
-          
+              child: const Text("Contar pasos back")),
           Expanded(
             child: FutureBuilder(
               future: getDocIDs(),

@@ -1,5 +1,8 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:pruebas/modules/modules.dart';
+
+import '../widget_arguments.dart';
 
 class Module_1 extends StatefulWidget {
   const Module_1({Key? key}) : super(key: key);
@@ -25,7 +28,14 @@ class _Module_1State extends State<Module_1> {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, "/video_screen");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VideoScreen(
+                              "https://firebasestorage.googleapis.com/v0/b/demos-d97a5.appspot.com/o/Modulo_1%2Fplaya.mp4?alt=media&token=6c3e8c9a-f53b-45d9-ac93-d96feeda7ad2")));
+                  /*Navigator.pushNamed(context, "/video_screen",
+                      arguments: WidgetArguments(
+                          "https://firebasestorage.googleapis.com/v0/b/demos-d97a5.appspot.com/o/Modulo_1%2Fplaya.mp4?alt=media&token=6c3e8c9a-f53b-45d9-ac93-d96feeda7ad2"));*/
                 },
                 child: const Text("Video")),
           ],
